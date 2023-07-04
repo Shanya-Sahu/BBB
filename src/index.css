@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@import url('https://fonts.googleapis.com/css2?family=Marcellus+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+
+
+:root {
+    --primary-color: #FF7E28;
+    --secondary-color: #282828;
+    --heading-color: #1D165C;
+    --btn-color: #FF7E28;
+    --bg-light-color: #FFF4EB;
+    --bg-dark-color: #FF7E28;
+    --text-light: #FFF9F9;
+    --default-padding-x: 0px 150px;
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+/* .active {
+    color: var(--primary-color);
+} */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: bold;
+    font-family: 'Marcellus SC', serif;
+}
+
+h1,
+h2 {
+    font-size: 2.5rem;
+    line-height: 50px;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: 1.5rem;
+    line-height: 30px;
+    margin-bottom: 10px;
+}
+
+h4 {
+    font-size: 1.2rem;
+    line-height: 30px;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+
+@media screen and (max-width:1300px) {
+    :root {
+        --default-padding-x: 0px 40px;
+
+    }
+}
+
+/* Medium Screen */
+@media screen and (max-width:800px) {
+    :root {
+        --default-padding-x: 0px 20px;
+    }
+
+    h1,
+    h2 {
+        font-size: 1.5rem;
+        line-height: 30px;
+    }
+
+
+}
+
+.isActive {
+    display: flex;
+}
+
+.unActive {
+    display: none;
+}
