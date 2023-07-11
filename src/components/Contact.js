@@ -65,6 +65,8 @@ function Contact() {
      document.querySelector("#name").value = "";
      document.querySelector("#email").value = "";
      document.querySelector("#phone").value = "";
+    document.querySelector("#service_interested").value = "";
+
    };
 
    
@@ -148,6 +150,13 @@ Gurugram, Haryana 122001</p>
                 placeholder="Phone Number"
                 required
               />
+               <select required id="service_interested" name="service_interested" className="w-full focus:outline-none border-b-2 mb-10 bg-[var(--secondary-color)] text-[var(--text-light)] border-[var(--text-light)] transition-all focus:border-[var(--primary-color)] focus:pb-2 outline-[var(--secondary-color)] ">
+                <option value="" disabled selected>Service interested in</option>
+                  <option value="website-dev" className="hover:bg-[var(--bg-light-color)] hover:text-[var(--secondary-color)]">Website Development</option>
+                  <option value="software-dev">Software Development</option>
+                  <option value="mobile-dev">Mobile Application Development</option>
+                  <option value="digital-mar">Digital Marketing</option>
+              </select>
 
               <button className="mx-auto border-2 rounded-full py-3 px-8 border-[var(--text-light)] text-[var(--text-light)] font-semibold flex items-center transition-all hover:bg-[var(--primary-color)] hover:text-[var(--text-light)] hover:border-[var(--primary-color)]">
                 Send Message

@@ -3,7 +3,7 @@ import { BsSendFill } from "react-icons/bs";
 import software from "../assets/software.png";
 import digital from "../assets/digital.png";
 import website from "../assets/website.png";
-import uiux from "../assets/ui-ux.png";
+import app from "../assets/mobile-app.png";
 import bg from "../assets/bg.png";
 import team from "../assets/team.png";
 import { MdVerified } from "react-icons/md";
@@ -78,6 +78,7 @@ function LandingPage() {
     document.querySelector("#name").value = "";
     document.querySelector("#email").value = "";
     document.querySelector("#phone").value = "";
+    document.querySelector("#service_interested").value = "";
   };
 
   return (
@@ -178,6 +179,13 @@ function LandingPage() {
                 placeholder="Phone Number"
                 required
               />
+              <select required id="service_interested" name="service_interested" className="w-full focus:outline-none border-b-2 mb-10 bg-[var(--secondary-color)] text-[var(--text-light)] border-[var(--text-light)] transition-all focus:border-[var(--primary-color)] focus:pb-2 outline-[var(--secondary-color)] ">
+                <option value="" disabled selected>Service interested in</option>
+                  <option value="website-dev" className="hover:bg-[var(--bg-light-color)] hover:text-[var(--secondary-color)]">Website Development</option>
+                  <option value="software-dev">Software Development</option>
+                  <option value="mobile-dev">Mobile Application Development</option>
+                  <option value="digital-mar">Digital Marketing</option>
+              </select>
 
               <button className="mx-auto border-2 rounded-full py-3 px-8 border-[var(--text-light)] text-[var(--text-light)] font-semibold flex items-center transition-all hover:bg-[var(--primary-color)] hover:text-[var(--text-light)] hover:border-[var(--primary-color)]">
                 Free Quote
@@ -194,8 +202,8 @@ function LandingPage() {
           More Than Solutions
         </p>
 
-        <div className="w-[50%] flex justify-evenly items-center text-center pt-20 flex-wrap md:w-[80%] lg:w-full">
-          <div className="relative animate__animated animate__zoomIn bg-[var(--secondary-color)] text-[var(--text-light)] w-[200px] h-[150px] rounded-md flex justify-center items-center flex-col mb-20 lg:mb-0">
+        <div className="w-[90%] flex justify-evenly items-center text-center pt-20 flex-wrap md:w-[80%] lg:w-full">
+          <div className="relative animate__animated animate__zoomIn bg-[var(--secondary-color)] text-[var(--text-light)] w-[270px] h-[150px] rounded-md flex justify-center items-center flex-col mb-20 lg:mb-0">
             <div className="bg-[var(--primary-color)] p-4 w-[70px] h-[70px] object-contain rounded-full absolute -top-8">
               <img src={software} alt="icon" />
             </div>
@@ -205,16 +213,16 @@ function LandingPage() {
               <br /> Development
             </p>
           </div>
-          <div className="relative animate__animated animate__zoomIn bg-[var(--secondary-color)] text-[var(--text-light)] w-[200px] h-[150px] rounded-md flex justify-center items-center flex-col mb-20 lg:mb-0">
+          <div className="relative animate__animated animate__zoomIn bg-[var(--secondary-color)] text-[var(--text-light)] w-[270px] h-[150px] rounded-md flex justify-center items-center flex-col mb-20 lg:mb-0">
             <div className="bg-[var(--primary-color)] p-4 w-[70px] h-[70px] object-contain rounded-full absolute -top-8">
               <img src={website} alt="icon" />
             </div>
             <p className="mt-4 text-xl font-semibold">
-              Web <br />
+              Website <br />
               Development
             </p>
           </div>
-          <div className="relative animate__animated animate__zoomIn bg-[var(--secondary-color)] text-[var(--text-light)] w-[200px] h-[150px] rounded-md flex justify-center items-center flex-col mb-20 lg:mb-0">
+          <div className="relative animate__animated animate__zoomIn bg-[var(--secondary-color)] text-[var(--text-light)] w-[270px] h-[150px] rounded-md flex justify-center items-center flex-col mb-20 lg:mb-0">
             <div className="bg-[var(--primary-color)] p-4 w-[70px] h-[70px] object-contain rounded-full absolute -top-8">
               <img src={digital} alt="icon" />
             </div>
@@ -223,13 +231,12 @@ function LandingPage() {
               Marketing
             </p>
           </div>
-          <div className="relative animate__animated animate__zoomIn bg-[var(--secondary-color)] text-[var(--text-light)] w-[200px] h-[150px] rounded-md flex justify-center items-center flex-col mb-20 lg:mb-0">
+          <div className="relative animate__animated animate__zoomIn bg-[var(--secondary-color)] text-[var(--text-light)] w-[270px] h-[150px] rounded-md flex justify-center items-center flex-col mb-20 lg:mb-0">
             <div className="bg-[var(--primary-color)] p-4 w-[70px] h-[70px] object-contain rounded-full absolute -top-8">
-              <img src={uiux} alt="icon" />
+              <img src={app} alt="icon" />
             </div>
             <p className="mt-4 text-xl font-semibold">
-              UI/UX <br />
-              Designing
+            Mobile <br></br>Application Development
             </p>
           </div>
         </div>
