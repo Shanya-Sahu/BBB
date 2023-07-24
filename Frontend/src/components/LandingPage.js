@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import { BsSendFill } from "react-icons/bs";
 import software from "../assets/software.png";
 import digital from "../assets/digital.png";
@@ -10,12 +10,13 @@ import { MdVerified } from "react-icons/md";
 import { HiStar } from "react-icons/hi";
 import { BsRocketTakeoffFill } from "react-icons/bs";
 // import emailjs from "@emailjs/browser";
-import { toast, Toaster } from "react-hot-toast";
+// import { toast , Toaster } from "react-hot-toast";
 import LogoCarousel from "./LogoCarousel";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "animate.css";
 import { useNavigate } from "react-router-dom";
+import Form from "./Form";
 
 
 
@@ -30,62 +31,62 @@ function LandingPage() {
   }
   
   //Quick Inquiry Form to send data on mail
-  const form = useRef();
+  // const form = useRef();
 
-  const sendEmail = (e) => {
-    e.preventDefault();
+  // const sendEmail = (e) => {
+  //   e.preventDefault();
 
-    // emailjs
-    //   .sendForm(
-    //     "service_ascqj24",
-    //     "template_ttahjho",
-    //     form.current,
-    //     "GNVaFKkDpRObcwGsq"
-    //   )
-    //   .then(
-    //     (result) => {
-    //       console.log(
-    //         "Thanks for submitting your enquiry our team will contact you shortly."
-    //       );
-    //       toast.success(
-    //         "Thanks for submitting your enquiry our team will contact you shortly."
-    //       );
-    //     },
-    //     (error) => {
-    //       console.log(error.text);
-    //       toast.error(error.text);
-    //     }
-    //   );
+  //   // emailjs
+  //   //   .sendForm(
+  //   //     "service_ascqj24",
+  //   //     "template_ttahjho",
+  //   //     form.current,
+  //   //     "GNVaFKkDpRObcwGsq"
+  //   //   )
+  //   //   .then(
+  //   //     (result) => {
+  //   //       console.log(
+  //   //         "Thanks for submitting your enquiry our team will contact you shortly."
+  //   //       );
+  //   //       toast.success(
+  //   //         "Thanks for submitting your enquiry our team will contact you shortly."
+  //   //       );
+  //   //     },
+  //   //     (error) => {
+  //   //       console.log(error.text);
+  //   //       toast.error(error.text);
+  //   //     }
+  //   //   );
 
-    //connect with goolge sheets
-    const formElem = document.querySelector("#inquiryForm");
-    e.preventDefault();
-    console.log("Submitted");
-    const formData = new FormData(formElem);
-     fetch(
-      "https://script.google.com/macros/s/AKfycbwksJpkV40ojBM8vPSM5SHmSGG2Vm2LoCHLos7TdUCp_RR6i72Z8Zn6gUhWFmMIhsNbXg/exec",
-      {
-        method: "POST",
-        body: formData,
-      }
-    )
-      .then(
-        toast.success(
-          "Thanks for submitting your enquiry our team will contact you shortly."
-        )
-      )
-      .catch((e) => toast.error("Something wrong!"));
+  //   //connect with goolge sheets
+  //   const formElem = document.querySelector("#inquiryForm");
+  //   e.preventDefault();
+  //   console.log("Submitted");
+  //   const formData = new FormData(formElem);
+  //    fetch(
+  //     "https://script.google.com/macros/s/AKfycbwksJpkV40ojBM8vPSM5SHmSGG2Vm2LoCHLos7TdUCp_RR6i72Z8Zn6gUhWFmMIhsNbXg/exec",
+  //     {
+  //       method: "POST",
+  //       body: formData,
+  //     }
+  //   )
+  //     .then(
+  //       toast.success(
+  //         "Thanks for submitting your enquiry our team will contact you shortly."
+  //       )
+  //     )
+  //     .catch((e) => toast.error("Something wrong!"));
 
-    document.querySelector("#name").value = "";
-    document.querySelector("#email").value = "";
-    document.querySelector("#phone").value = "";
-    document.querySelector("#service_interested").value = "";
-  };
+  //   document.querySelector("#name").value = "";
+  //   document.querySelector("#email").value = "";
+  //   document.querySelector("#phone").value = "";
+  //   document.querySelector("#service_interested").value = "";
+  // };
 
   return (
     <main>
       {/* Landing Page */}
-      <Toaster position="top-right" reverseOrder={false} />
+      {/* <Toaster position="top-right" reverseOrder={false} /> */}
       <section
         className="hero-section min-h-[150vh] w-full flex justify-evenly items-center p-[var(--default-padding-x)] bg-[var(--bg-light-color)] flex-col pt-10 pb-20 md:flex-row xl:min-h-[90vh] md:min-h-[100vh] lg:justify-center lg:pt-10 lg:min-h-[140vh]"
         style={{ backgroundImage: `url(${bg})`, backgroundSize:'cover', backgroundPosition:"center" }}
@@ -147,7 +148,7 @@ function LandingPage() {
          
           <br />
         </div>
-        <div className="w-[90%] md:w-[40%] mt-10 lg:mt-0">
+        {/* <div className="w-[90%] md:w-[40%] mt-10 lg:mt-0">
           <div className="w-full mx-auto flex justify-center items-center flex-col bg-[var(--secondary-color)] py-10 rounded-2xl xl:w-[80%] animate__animated animate__slideInRight">
             <h2 className="text-[var(--text-light)] mb-8">Quick Inquiry</h2>
             <form
@@ -194,7 +195,11 @@ function LandingPage() {
               </button>
             </form>
           </div>
-        </div>
+        </div> */}
+<div className="w-[90%] md:w-[40%] mt-10 lg:mt-0">
+<Form/>
+</div>
+        
       </section>
 
       <section className="services min-h-[50vh] w-full flex justify-center items-center flex-col text-center my-[50px] p-[var(--default-padding-x)] lg:my-[100px]">

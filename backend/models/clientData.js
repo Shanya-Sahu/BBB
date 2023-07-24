@@ -12,18 +12,20 @@ const clientSchema =  new mongoose.Schema({
         required:true,
         maxLength:50,
     },
-    phone:{
-        type:Number,
-        required:true,
-        maxLength:12,
+    phone: {
+        type: String,
+        required: true,
+        maxLength: 12,
     },
     service:{
         type:String,
         required:true,
+        maxLength: 200,
     },
     status:{
         type:String,
         required:true,
+        default:'Pending',
     },
     createdAt:{
         type:Date,

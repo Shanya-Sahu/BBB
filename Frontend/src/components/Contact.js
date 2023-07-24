@@ -1,13 +1,14 @@
-import React, { useRef } from "react";
+import React from "react";
 import bg from "../assets/bg.png";
 // import emailjs from "@emailjs/browser";
-import { toast, Toaster } from "react-hot-toast";
-import { BsSendFill } from "react-icons/bs";
+// import { toast, Toaster } from "react-hot-toast";
+// import { BsSendFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { MdEmail } from "react-icons/md";
 import { FaPhoneAlt } from "react-icons/fa";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import "animate.css";
+import Form from './Form';
 
 
 
@@ -16,63 +17,63 @@ function Contact() {
   
 
    //Quick Inquiry Form to send data on mail
-   const form = useRef();
+  //  const form = useRef();
 
-   const sendEmail = (e) => {
-     e.preventDefault();
+  //  const sendEmail = (e) => {
+  //    e.preventDefault();
  
-    //  emailjs
-    //    .sendForm(
-    //      "service_ascqj24",
-    //      "template_ttahjho",
-    //      form.current,
-    //      "GNVaFKkDpRObcwGsq"
-    //    )
-    //    .then(
-    //      (result) => {
-    //        console.log(
-    //          "Thanks for submitting your enquiry our team will contact you shortly."
-    //        );
-    //        toast.success(
-    //          "Thanks for submitting your enquiry our team will contact you shortly."
-    //        );
-    //      },
-    //      (error) => {
-    //        console.log(error.text);
-    //        toast.error(error.text);
-    //      }
-    //    );
+  //   //  emailjs
+  //   //    .sendForm(
+  //   //      "service_ascqj24",
+  //   //      "template_ttahjho",
+  //   //      form.current,
+  //   //      "GNVaFKkDpRObcwGsq"
+  //   //    )
+  //   //    .then(
+  //   //      (result) => {
+  //   //        console.log(
+  //   //          "Thanks for submitting your enquiry our team will contact you shortly."
+  //   //        );
+  //   //        toast.success(
+  //   //          "Thanks for submitting your enquiry our team will contact you shortly."
+  //   //        );
+  //   //      },
+  //   //      (error) => {
+  //   //        console.log(error.text);
+  //   //        toast.error(error.text);
+  //   //      }
+  //   //    );
  
-     //connect with goolge sheets
-     const formElem = document.querySelector("#inquiryForm");
-     e.preventDefault();
-     console.log("Submitted");
-     const formData = new FormData(formElem);
-      fetch(
-       "https://script.google.com/macros/s/AKfycbwksJpkV40ojBM8vPSM5SHmSGG2Vm2LoCHLos7TdUCp_RR6i72Z8Zn6gUhWFmMIhsNbXg/exec",
-       {
-         method: "POST",
-         body: formData,
-       }
-     )
-       .then(
-         toast.success(
-           "Thanks for submitting your enquiry our team will contact you shortly."
-         )
-       )
-       .catch((e) => toast.error("Something wrong!"));
+  //    //connect with goolge sheets
+  //    const formElem = document.querySelector("#inquiryForm");
+  //    e.preventDefault();
+  //    console.log("Submitted");
+  //    const formData = new FormData(formElem);
+  //     fetch(
+  //      "https://script.google.com/macros/s/AKfycbwksJpkV40ojBM8vPSM5SHmSGG2Vm2LoCHLos7TdUCp_RR6i72Z8Zn6gUhWFmMIhsNbXg/exec",
+  //      {
+  //        method: "POST",
+  //        body: formData,
+  //      }
+  //    )
+  //      .then(
+  //        toast.success(
+  //          "Thanks for submitting your enquiry our team will contact you shortly."
+  //        )
+  //      )
+  //      .catch((e) => toast.error("Something wrong!"));
  
-     document.querySelector("#name").value = "";
-     document.querySelector("#email").value = "";
-     document.querySelector("#phone").value = "";
-    document.querySelector("#service_interested").value = "";
+  //    document.querySelector("#name").value = "";
+  //    document.querySelector("#email").value = "";
+  //    document.querySelector("#phone").value = "";
+  //   document.querySelector("#service_interested").value = "";
 
-   };
+  //  };
 
    
   return (
     <div id="top-section">
-      <Toaster position="top-right" reverseOrder={false} />
+      {/* <Toaster position="top-right" reverseOrder={false} /> */}
 
     <section className="min-h-[30vh] w-full flex justify-evenly items-center p-[var(--default-padding-x)] bg-[var(--bg-light-color)] flex-col md:flex-row lg:justify-center "
      style={{ backgroundImage: `url(${bg})`, backgroundSize:'cover', backgroundPosition:"center" }}>
@@ -118,9 +119,9 @@ Gurugram, Haryana 122001</p>
      <section className="py-10 w-full flex justify-evenly items-center p-[var(--default-padding-x)]">
        
      <div className="w-[100%] ">
-          <div className="w-full mx-auto flex justify-center items-center flex-col bg-[var(--secondary-color)] py-10 rounded-2xl xl:w-[80%] animate__animated animate__slideInRight">
-            <h2 className="text-[var(--text-light)] mb-8">Get in touch with us</h2>
-            <form
+          {/* <div className="w-full mx-auto flex justify-center items-center flex-col bg-[var(--secondary-color)] py-10 rounded-2xl xl:w-[80%] animate__animated animate__slideInRight"> */}
+            {/* <h2 className="text-[var(--text-light)] mb-8">Get in touch with us</h2> */}
+            {/* <form
               id="inquiryForm"
               ref={form}
               onSubmit={sendEmail}
@@ -162,9 +163,11 @@ Gurugram, Haryana 122001</p>
                 Submit
                 <BsSendFill className="ml-2" type="submit" value="Send" />
               </button>
-            </form>
+            </form> */}
+
+            <Form/>
           </div>
-          </div>
+          {/* </div> */}
 
 
      </section>
