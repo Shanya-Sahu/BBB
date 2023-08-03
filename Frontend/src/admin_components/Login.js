@@ -3,7 +3,6 @@ import { HiOutlineMail } from 'react-icons/hi';
 import { AiFillEye } from 'react-icons/ai';
 import Dashboard from './Dashboard';
 import { toast, Toaster } from 'react-hot-toast';
-import {RiDeleteBack2Line} from 'react-icons/ri';
 
 
 function Login() {
@@ -21,38 +20,9 @@ function Login() {
     const pass_val = password.current.value;
 
     if (email_val === admin_email && pass_val === admin_password) {
-      // alert('Logged in Successfully!');
 
       setTimeout(()=>{
-        
-      toast.custom((t) => (
-        <div
-          className={`${
-            t.visible ? 'animate-enter' : 'animate-leave'
-          } max-w-md w-full bg-white shadow-lg rounded-lg pointer-events-auto flex ring-1 ring-black ring-opacity-5`}
-        >
-          <div className="flex-1 w-0 p-4">
-            <div className="flex items-start">
-              <div className="ml-3 flex-1">
-                <h5 className="text-sm text-gray-900 font-semibold">
-                  Successfully Logged In!
-                </h5>
-                <p className="mt-1 text-sm text-gray-500">
-                  Admin
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="flex border-l border-gray-200">
-            <button
-              onClick={() => toast.dismiss(t.id)}
-              className="w-full border border-transparent rounded-none rounded-r-lg p-4 flex items-center justify-center text-sm font-medium text-[#FF7E28] hover:text-[#FF7E28] focus:outline-none focus:ring-2 focus:ring-[#FF7E28]"
-            >
-             <RiDeleteBack2Line className='text-[#FF7E28] text-4xl'/>
-            </button>
-          </div>
-        </div>
-      ));
+      toast.success('Successfully LoggedIn!')
       },1000);
 
       setIsLoggedIn(true);

@@ -8,6 +8,7 @@ import { toast, Toaster } from 'react-hot-toast';
 function ManageClients() {
 
   const [data, setData] = useState([]);
+  const [selectedItemId, setSelectedItemId] = useState(null);
 
   useEffect(() => {
     fetchData();
@@ -15,10 +16,8 @@ function ManageClients() {
 
   const fetchData = async () => {
     try {
-      const response = await fetch(
-        "http://localhost:3001/api/v1/getClientData"
-      );
-      const res = await response.json(); // Add await here
+      const response = await fetch("http://localhost:3001/api/v1/getClientData");
+      const res = await response.json();
       setData(res.data);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -28,171 +27,112 @@ function ManageClients() {
   const [deleteConfirm , setDeleteConfirm] = useState(false);
 
   function handleEdit(){
-    toast.custom((t) => (
-      <div
-        className={`${
-          t.visible ? 'animate-enter' : 'animate-leave'
-        } max-w-md w-full bg-white shadow-lg rounded-lg pointer-events-auto flex ring-1 ring-black ring-opacity-5 absolute top-72`}
-      >
-        <div className="flex-1 w-0 p-4">
-          <div className="flex items-start">
-            <div className="ml-3 flex-1">
-              <p className="text-sm font-medium text-gray-900">
-                Do you want to edit?
-              </p>
-              <p className="mt-1 text-sm text-gray-500">
-               Edit client data
-              </p>
+    setTimeout(()=>{
+      toast.custom((t) => (
+        <div
+          className={`${
+            t.visible ? 'animate-enter' : 'animate-leave'
+          } max-w-md w-full bg-white shadow-lg rounded-lg pointer-events-auto flex ring-1 ring-black ring-opacity-5 absolute top-72`}
+        >
+          <div className="flex-1 w-0 p-4">
+            <div className="flex items-start">
+              <div className="ml-3 flex-1">
+                <p className="text-sm font-medium text-gray-900">
+                  Do you want to edit?
+                </p>
+                <p className="mt-1 text-sm text-gray-500">
+                 Edit client data
+                </p>
+              </div>
             </div>
           </div>
+          <div className="flex border-l border-gray-200">
+            <button
+              onClick={() => toast.dismiss(t.id)}
+              className="w-full border border-transparent rounded-none rounded-r-lg p-4 flex items-center justify-center text-sm font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            >
+            <BiEdit className='text-4xl'/>
+            </button>
+          </div>
         </div>
-        <div className="flex border-l border-gray-200">
-          <button
-            onClick={() => toast.dismiss(t.id)}
-            className="w-full border border-transparent rounded-none rounded-r-lg p-4 flex items-center justify-center text-sm font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          >
-          <BiEdit className='text-4xl'/>
-          </button>
-        </div>
-      </div>
-    ))
+      ))
+      },1000);
+
+  
   }
 
 
-  function handleDelete(){
+  function handleDelete(itemId){
+    setSelectedItemId(itemId);
     setDeleteConfirm(true);
+    
 
-    toast.custom((t) => (
-      <div
-        className={`${
-          t.visible ? 'animate-enter' : 'animate-leave'
-        } max-w-md w-full bg-white shadow-lg rounded-lg pointer-events-auto flex ring-1 ring-black ring-opacity-5 absolute top-72`}
-      >
-        <div className="flex-1 w-0 p-4">
-          <div className="flex items-start">
-            <div className="ml-3 flex-1">
-              <p className="text-sm font-medium text-gray-900">
-                Do you want to delete
-              </p>
-              <p className="mt-1 text-sm text-gray-500">
-                It's permanent deleted in your db
-              </p>
+    setTimeout(()=>{
+      toast.custom((t) => (
+        <div
+          className={`${
+            t.visible ? 'animate-enter' : 'animate-leave'
+          } max-w-md w-full bg-white shadow-lg rounded-lg pointer-events-auto flex ring-1 ring-black ring-opacity-5 absolute top-72`}
+        >
+          <div className="flex-1 w-0 p-4">
+            <div className="flex items-start">
+              <div className="ml-3 flex-1">
+                <p className="text-sm font-medium text-gray-900">
+                  Do you want to delete
+                </p>
+                <p className="mt-1 text-sm text-gray-500">
+                  It's permanent deleted in your db
+                </p>
+              </div>
             </div>
           </div>
+          <div className="flex border-l border-gray-200">
+            <button
+              onClick={() => handleDeleteClick(t.id)} 
+              className="w-full border border-transparent rounded-none rounded-r-lg p-4 flex items-center justify-center text-sm font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            >
+             <MdDeleteOutline className='text-4xl text-red-600'/>
+            </button>
+          </div>
         </div>
-        <div className="flex border-l border-gray-200">
-          <button
-            onClick={() => toast.dismiss(t.id)}
-            className="w-full border border-transparent rounded-none rounded-r-lg p-4 flex items-center justify-center text-sm font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          >
-           <MdDeleteOutline className='text-4xl text-red-600'/>
-          </button>
-        </div>
-      </div>
-    ))
+      ))
+      },1000);
+
+   
   }
 
- 
+  function handleDeleteClick(toastId) {
+    toast.dismiss(toastId);
+    deleteRow();
+  }
 
-  // const data = [
-  //   {
-  //     name: 'Shanya',
-  //     email: 'shanyasahu11@gmail.com',
-  //     phone: '6266060475',
-  //     category: 'Website Development',
-  //     date: '06/07/2023',
-  //     status: 'Confirmed',
-  //   },
-  //   {
-  //     name: 'Siya',
-  //     email: 'siya@gmail.com',
-  //     phone: '6266060475',
-  //     category: 'App Development',
-  //     date: '05/07/2023',
-  //     status: 'Pending',
-  //   },
-  //   {
-  //     name: 'Mayra',
-  //     email: 'mayra@gmail.com',
-  //     phone: '6266060475',
-  //     category: 'Software Development',
-  //     date: '03/07/2023',
-  //     status: 'Canceled',
-  //   },
-  //   {
-  //     name: 'Shanya',
-  //     email: 'shanyasahu11@gmail.com',
-  //     phone: '6266060475',
-  //     category: 'Website Development',
-  //     date: '06/07/2023',
-  //     status: 'Confirmed',
-  //   },
-  //   {
-  //     name: 'Siya',
-  //     email: 'siya@gmail.com',
-  //     phone: '6266060475',
-  //     category: 'App Development',
-  //     date: '05/07/2023',
-  //     status: 'Pending',
-  //   },
-  //   {
-  //     name: 'Mayra',
-  //     email: 'mayra@gmail.com',
-  //     phone: '6266060475',
-  //     category: 'Software Development',
-  //     date: '03/07/2023',
-  //     status: 'Canceled',
-  //   },
-  //   {
-  //     name: 'Shanya',
-  //     email: 'shanyasahu11@gmail.com',
-  //     phone: '6266060475',
-  //     category: 'Website Development',
-  //     date: '06/07/2023',
-  //     status: 'Confirmed',
-  //   },
-  //   {
-  //     name: 'Siya',
-  //     email: 'siya@gmail.com',
-  //     phone: '6266060475',
-  //     category: 'App Development',
-  //     date: '05/07/2023',
-  //     status: 'Pending',
-  //   },
-  //   {
-  //     name: 'Mayra',
-  //     email: 'mayra@gmail.com',
-  //     phone: '6266060475',
-  //     category: 'Software Development',
-  //     date: '03/07/2023',
-  //     status: 'Canceled',
-  //   },
-  //   {
-  //     name: 'Shanya',
-  //     email: 'shanyasahu11@gmail.com',
-  //     phone: '6266060475',
-  //     category: 'Website Development',
-  //     date: '06/07/2023',
-  //     status: 'Confirmed',
-  //   },
-  //   {
-  //     name: 'Siya',
-  //     email: 'siya@gmail.com',
-  //     phone: '6266060475',
-  //     category: 'App Development',
-  //     date: '05/07/2023',
-  //     status: 'Pending',
-  //   },
-  //   {
-  //     name: 'Mayra',
-  //     email: 'mayra@gmail.com',
-  //     phone: '6266060475',
-  //     category: 'Software Development',
-  //     date: '03/07/2023',
-  //     status: 'Canceled',
-  //   }
-  //   //this data will come from database
-  // ];
+  
+  function deleteRow() {
+    // Make sure there is a selected item to delete
+    if (selectedItemId) {
+      fetch(`http://localhost:3001/api/v1/deleteClientData/${selectedItemId}`, {
+        method: 'DELETE',
+      })
+        .then((response) => {
+          if (response.ok) {
+            setData((prevData) => prevData.filter((item) => item._id !== selectedItemId));
+            toast.success('Client data deleted successfully');
+          } else {
+            toast.error('Error deleting client data');
+          }
+        })
+        .catch((error) => {
+          console.error('Error deleting client data:', error);
+          toast.error('Error deleting client data');
+        })
+        .finally(() => {
+          setDeleteConfirm(false);
+          setSelectedItemId(null);
+        });
+    }
+  }
+
+
 
 
   return (
@@ -206,6 +146,7 @@ function ManageClients() {
           <div className="tbl-feature"></div>
           <table className='w-full text-left'>
             <thead>
+            <tr>
               <th>
                 <input type="checkbox" name="" id="" />
               </th>
@@ -230,23 +171,11 @@ function ManageClients() {
               <th>
                 Action
               </th>
+              </tr>
             </thead>
 
 
-            {/* <tr className='border-b-[1px] hover:bg-[#F5F5F5] text-[#637381]'>
-              <td>
-              <input type="checkbox" name="" id="" />
-              </td>
-              <td>Shanya</td>
-              <td>shanyasahu11@gmail.com</td>
-              <td>6266060475</td>
-              <td>Website Development</td>
-              <td>06/07/2023</td>
-              <td>Confirmed</td>
-              <td className='flex'><BiEdit className='text-2xl mr-4 cursor-pointer'/> <MdDeleteOutline className='text-2xl text-[red] cursor-pointer'/></td>
-            </tr> */}
-
-
+<tbody>
 {data.length === 0 ? (
   <tr>
     <td colSpan="8" className='text-center'>No Client Available!</td>
@@ -254,7 +183,7 @@ function ManageClients() {
 ) : (
   data.map((item) => (
     <tr
-      key={item.id}
+      key={item._id}
       className="border-b-[1px] hover:bg-[#F5F5F5] text-[#637381]"
     >
       <td>
@@ -269,7 +198,7 @@ function ManageClients() {
     className={`py-2 px-3 text-sm rounded-md min-w-[100px] text-white ${
       item.status === 'Confirmed' ? 'bg-[#28C76F]' :
       item.status === 'Pending' ? 'bg-[#00CFE8]' :
-      item.status === 'Canceled' ? 'bg-red-500' :
+      item.status === 'Cancelled' ? 'bg-red-500' :
       'bg-[grey]'
     }`}
   >
@@ -277,13 +206,13 @@ function ManageClients() {
   </button></td>
       <td className="flex">
         <BiEdit className="text-2xl mr-4 cursor-pointer" onClick={handleEdit} />
-        <MdDeleteOutline className="text-2xl text-[red] cursor-pointer"  onClick={handleDelete}/>
+        <MdDeleteOutline className="text-2xl text-[red] cursor-pointer"  onClick={() => handleDelete(item._id)}/>
       </td>
     </tr>
   ))
 )}
 
-
+</tbody>
             
           </table>
         </div>

@@ -1,51 +1,96 @@
-import React from 'react';
-import {FiUserX, FiUserMinus, FiUserCheck, FiUsers} from "react-icons/fi";
+import React from "react";
+import { FiUserX, FiUserMinus, FiUserCheck, FiUsers } from "react-icons/fi";
 // import GraphComponent from './GraphComponent';
-
-
+import { useState, useEffect } from "react";
 
 function DashboardHome() {
+  const [allClientsCount, setAllClientsCount] = useState([]);
+  const [allConfirmedCount, setAllConfirmedCount] = useState([]);
+  const [allPendingCount, setAllPendingCount] = useState([]);
+  const [allCancelledCount, setAllCancelledCount] = useState([]);
+
+
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+
+      const allClients = await fetch(
+        "http://localhost:3001/api/v1/getTotalClients"
+      );
+      const allClientsCount = await allClients.json(); // to get total number of clients stored in db
+      setAllClientsCount(allClientsCount.count);
+
+
+
+      const allConfirmed = await fetch(
+        "http://localhost:3001/api/v1/getConfirmedClients"
+      );
+      const allConfirmedClientCount = await allConfirmed.json(); // to get total number of confirmed clients stored in db
+      setAllConfirmedCount(allConfirmedClientCount.count);
+
+
+      const allPending = await fetch(
+        "http://localhost:3001/api/v1/getPendingClients"
+      );
+      const allPendingClientCount = await allPending.json(); // to get total number of Pending clients stored in db
+      setAllPendingCount(allPendingClientCount.count);
+
+      const allCancelled = await fetch(
+        "http://localhost:3001/api/v1/getCancelledClients"
+      );
+      const allCancelledClientCount = await allCancelled.json(); // to get total number of Cancelled clients stored in db
+      setAllCancelledCount(allCancelledClientCount.count);
+
+
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
   return (
     <div>
-      <div className='flex justify-evenly items-center flex-wrap'>
-        <div className='flex justify-between items-center w-[20%] h-[150px] bg-[var(--bg-dark-color)] p-5 rounded-md text-white m-2'>
+      <div className="flex justify-evenly items-center flex-wrap">
+        <div className="flex justify-between items-center w-[20%] h-[150px] bg-[var(--bg-dark-color)] p-5 rounded-md text-white m-2">
           <div>
             <h3>All</h3>
-            <p>100 Clients</p>
+            <p>{allClientsCount} Clients</p>
           </div>
           <div>
-          <FiUsers className='text-5xl'/>
+            <FiUsers className="text-5xl" />
           </div>
         </div>
 
-
-        <div className='flex justify-between items-center w-[20%] h-[150px] bg-[#28C76F] p-5 rounded-md text-white m-2'>
+        <div className="flex justify-between items-center w-[20%] h-[150px] bg-[#28C76F] p-5 rounded-md text-white m-2">
           <div>
             <h3>Confirmed</h3>
-            <p>70 Clients</p>
+            <p>{allConfirmedCount} Clients</p>
           </div>
           <div>
-          <FiUserCheck className='text-5xl'/>
+            <FiUserCheck className="text-5xl" />
           </div>
         </div>
 
-        <div className='flex justify-between items-center w-[20%] h-[150px] bg-[#00CFE8] p-5 rounded-md text-white m-2'>
+        <div className="flex justify-between items-center w-[20%] h-[150px] bg-[#00CFE8] p-5 rounded-md text-white m-2">
           <div>
             <h3>Pending</h3>
-            <p>20 Clients</p>
+            <p>{allPendingCount} Clients</p>
           </div>
           <div>
-          <FiUserMinus className='text-5xl'/>
+            <FiUserMinus className="text-5xl" />
           </div>
         </div>
 
-        <div className='flex justify-between items-center w-[20%] h-[150px] bg-red-500 p-5 rounded-md text-white m-2'>
+        <div className="flex justify-between items-center w-[20%] h-[150px] bg-red-500 p-5 rounded-md text-white m-2">
           <div>
-            <h3>Canceled</h3>
-            <p>10 Clients</p>
+            <h3>Cancelled</h3>
+            <p>{allCancelledCount} Clients</p>
           </div>
           <div>
-          <FiUserX className='text-5xl'/>
+            <FiUserX className="text-5xl" />
           </div>
         </div>
       </div>

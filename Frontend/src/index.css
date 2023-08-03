@@ -124,9 +124,10 @@ h4 {
   /* admin pannel css */
 
   .login-bg{
-    background-image: url(./assets/login.jpg);
-    background-size: cover;
+    background-image: url(./assets/login.png);
+    background-size: contain;
     background-repeat: no-repeat;
+    background-position: center;
   }
 
 

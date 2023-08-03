@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { toast , Toaster } from "react-hot-toast";
+import { toast} from "react-hot-toast";
 
 function NewClient() {
   const [formData, setFormData] = useState({
@@ -50,7 +50,7 @@ function NewClient() {
   return (
     
     <div>
-      <Toaster position="top-right" reverseOrder={false} />
+      {/* <Toaster position="top-right" reverseOrder={false} /> */}
 
       <section>
         <h5 className='text-lg'>New Client</h5>

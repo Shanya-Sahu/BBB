@@ -52,7 +52,7 @@ function Dashboard() {
                 <AiOutlineUserAdd className='text-5xl'/>
                 </div>
                 <div>
-                <h5>Name</h5>
+                <h5>BBB</h5>
                 <p className='text-xs'>Admin</p>
                 </div>
             </div>
