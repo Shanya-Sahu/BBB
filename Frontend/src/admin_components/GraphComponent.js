@@ -1,62 +1,49 @@
 // import React from 'react';
-// import { Line } from 'react-chartjs-2';
+// import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 
-// const GraphComponent = () => {
-//   const data = {
-//     labels: ['January', 'February', 'March', 'April', 'May', 'June'],
-//     datasets: [
-//       {
-//         label: 'Dataset 1',
-//         data: [65, 59, 80, 81, 56, 55],
-//         yAxisID: 'y-axis-1',
-//         borderColor: 'red',
-//         backgroundColor: 'transparent',
-//       },
-//       {
-//         label: 'Dataset 2',
-//         data: [28, 48, 40, 19, 86, 27],
-//         yAxisID: 'y-axis-2',
-//         borderColor: 'blue',
-//         backgroundColor: 'transparent',
-//       },
-//     ],
-//   };
+// const data = [
+//   { name: 'Group A', value: 400 },
+//   { name: 'Group B', value: 300 },
+//   { name: 'Group C', value: 300 },
+//   { name: 'Group D', value: 200 },
+// ];
 
-//   const options = {
-//     scales: {
-//       yAxes: [
-//         {
-//           type: 'linear',
-//           display: true,
-//           position: 'left',
-//           id: 'y-axis-1',
-//         },
-//         {
-//           type: 'linear',
-//           display: true,
-//           position: 'right',
-//           id: 'y-axis-2',
-//           gridLines: {
-//             drawOnChartArea: false,
-//           },
-//         },
-//       ],
-//     },
-//   };
+// const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+
+// const RADIAN = Math.PI / 180;
+// const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
+//   const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+//   const x = cx + radius * Math.cos(-midAngle * RADIAN);
+//   const y = cy + radius * Math.sin(-midAngle * RADIAN);
 
 //   return (
-//     <div>
-//       <h2>Multi Axis Line Chart Example</h2>
-//       <Line data={data} options={options} />
-//     </div>
+//     <text x={x} y={y} fill="white" textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central">
+//       {`${(percent * 100).toFixed(0)}%`}
+//     </text>
 //   );
 // };
 
-
-
-
-
-
-  
+// const GraphComponent = () => {
+//   return (
+//     <ResponsiveContainer width="100%" height={400}>
+//       <PieChart>
+//         <Pie
+//           data={data}
+//           cx="50%"
+//           cy="50%"
+//           labelLine={false}
+//           label={renderCustomizedLabel}
+//           outerRadius={80}
+//           fill="#8884d8"
+//           dataKey="value"
+//         >
+//           {data.map((entry, index) => (
+//             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+//           ))}
+//         </Pie>
+//       </PieChart>
+//     </ResponsiveContainer>
+//   );
+// };
 
 // export default GraphComponent;

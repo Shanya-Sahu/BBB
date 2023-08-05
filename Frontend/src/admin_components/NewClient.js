@@ -24,7 +24,7 @@ function NewClient() {
     
     try {
       // Send the form data to the backend API endpoint
-      await axios.post('http://localhost:3001/api/v1/addNewClient', formData);
+      await axios.post(`${process.env.REACT_APP_BASE_URL}/addNewClient`, formData);
 
 
       // Reset the form after submission

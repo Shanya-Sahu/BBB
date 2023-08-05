@@ -19,7 +19,7 @@ function DashboardHome() {
     try {
 
       const allClients = await fetch(
-        "http://localhost:3001/api/v1/getTotalClients"
+        `${process.env.REACT_APP_BASE_URL}/getTotalClients`
       );
       const allClientsCount = await allClients.json(); // to get total number of clients stored in db
       setAllClientsCount(allClientsCount.count);
@@ -27,20 +27,20 @@ function DashboardHome() {
 
 
       const allConfirmed = await fetch(
-        "http://localhost:3001/api/v1/getConfirmedClients"
+        `${process.env.REACT_APP_BASE_URL}/getConfirmedClients`
       );
       const allConfirmedClientCount = await allConfirmed.json(); // to get total number of confirmed clients stored in db
       setAllConfirmedCount(allConfirmedClientCount.count);
 
 
       const allPending = await fetch(
-        "http://localhost:3001/api/v1/getPendingClients"
+        `${process.env.REACT_APP_BASE_URL}/getPendingClients`
       );
       const allPendingClientCount = await allPending.json(); // to get total number of Pending clients stored in db
       setAllPendingCount(allPendingClientCount.count);
 
       const allCancelled = await fetch(
-        "http://localhost:3001/api/v1/getCancelledClients"
+        `${process.env.REACT_APP_BASE_URL}/getCancelledClients`
       );
       const allCancelledClientCount = await allCancelled.json(); // to get total number of Cancelled clients stored in db
       setAllCancelledCount(allCancelledClientCount.count);

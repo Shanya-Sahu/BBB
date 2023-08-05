@@ -14,9 +14,15 @@ function ManageClients() {
     fetchData();
   }, []);
 
+  function deleteDataSuccessFlag(){
+    setTimeout(()=>{
+      toast.success('Client data deleted successfully');
+    },1000);
+  }
+
   const fetchData = async () => {
     try {
-      const response = await fetch("http://localhost:3001/api/v1/getClientData");
+      const response = await fetch(`${process.env.REACT_APP_BASE_URL}/getClientData`);
       const res = await response.json();
       setData(res.data);
     } catch (error) {
@@ -110,20 +116,24 @@ function ManageClients() {
   function deleteRow() {
     // Make sure there is a selected item to delete
     if (selectedItemId) {
-      fetch(`http://localhost:3001/api/v1/deleteClientData/${selectedItemId}`, {
+      fetch(`${process.env.REACT_APP_BASE_URL}/deleteClientData/${selectedItemId}`, {
         method: 'DELETE',
       })
         .then((response) => {
           if (response.ok) {
             setData((prevData) => prevData.filter((item) => item._id !== selectedItemId));
-            toast.success('Client data deleted successfully');
+            deleteDataSuccessFlag();
           } else {
+            setTimeout(()=>{
             toast.error('Error deleting client data');
+          },1000);
           }
         })
         .catch((error) => {
           console.error('Error deleting client data:', error);
+          setTimeout(()=>{
           toast.error('Error deleting client data');
+        },1000);
         })
         .finally(() => {
           setDeleteConfirm(false);

@@ -10,7 +10,7 @@ function ClientList() {
   const fetchData = async () => {
     try {
       const response = await fetch(
-        "http://localhost:3001/api/v1/getClientData"
+        `${process.env.REACT_APP_BASE_URL}/getClientData`
       );
       const res = await response.json(); // Add await here
       setData(res.data);
@@ -29,17 +29,20 @@ function ClientList() {
           <div className="tbl-feature"></div>
           <table className="w-full text-left">
             <thead>
+              <tr>
               <th>Name</th>
               <th>Email</th>
               <th>Phone</th>
               <th>Service</th>
               <th>Date</th>
-              <th>Status</th>
+              <th>Status</th></tr>
             </thead>
+
+<tbody>
 
             {data.map((item) => (
               <tr
-                key={item.id}
+              key={item._id}
                 className="border-b-[1px] hover:bg-[#F5F5F5] text-[#637381]"
               >
                 <td>{item.name}</td>
@@ -50,6 +53,9 @@ function ClientList() {
                 <td>{item.status}</td>
               </tr>
             ))}
+
+              
+</tbody>
           </table>
         </div>
       </section>
