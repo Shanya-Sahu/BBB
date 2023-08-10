@@ -40,7 +40,7 @@ function ClientList() {
 
 <tbody>
 
-            {data.map((item) => (
+            {data.slice().reverse().map((item) => (
               <tr
               key={item._id}
                 className="border-b-[1px] hover:bg-[#F5F5F5] text-[#637381]"
@@ -48,8 +48,8 @@ function ClientList() {
                 <td>{item.name}</td>
                 <td>{item.email}</td>
                 <td>{item.phone}</td>
-                <td>{item.service}</td>
-                <td>{item.createdAt.slice(0, 10)}</td>
+                <td className='capitalize'>{item.service}</td>
+                <td>{new Date(item.createdAt).toLocaleDateString("en-US")}</td>
                 <td>{item.status}</td>
               </tr>
             ))}

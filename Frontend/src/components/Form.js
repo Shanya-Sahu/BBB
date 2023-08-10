@@ -92,10 +92,10 @@ const Form = () => {
               />
               <select onChange={handleChange} value={formData.service}  required id="service_interested" name="service" className="w-full focus:outline-none border-b-2 mb-10 bg-[var(--secondary-color)] text-[var(--text-light)] border-[var(--text-light)] transition-all focus:border-[var(--primary-color)] focus:pb-2 outline-[var(--secondary-color)] ">
                 <option value="" disabled>Service interested in</option>
-                  <option value="website-dev" className="hover:bg-[var(--bg-light-color)] hover:text-[var(--secondary-color)]">Website Development</option>
-                  <option value="software-dev">Software Development</option>
-                  <option value="mobile-dev">Mobile Application Development</option>
-                  <option value="digital-mar">Digital Marketing</option>
+                  <option value="Website-development" className="hover:bg-[var(--bg-light-color)] hover:text-[var(--secondary-color)]">Website Development</option>
+                  <option value="software-development">Software Development</option>
+                  <option value="mobile-app-development">Mobile Application Development</option>
+                  <option value="digital-marketing">Digital Marketing</option>
               </select>
 
               <button type='submit' className="mx-auto border-2 rounded-full py-3 px-8 border-[var(--text-light)] text-[var(--text-light)] font-semibold flex items-center transition-all hover:bg-[var(--primary-color)] hover:text-[var(--text-light)] hover:border-[var(--primary-color)]">

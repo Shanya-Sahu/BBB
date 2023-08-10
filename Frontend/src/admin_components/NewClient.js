@@ -88,10 +88,10 @@ function NewClient() {
           <label htmlFor="" className='text-sm'>Service interested in</label><br />
           <select required onChange={handleChange} value={formData.service}  id="service_interested" name="service" className="p-2 border-2 rounded-md w-full">
                 <option value="" disabled>Select</option>
-                  <option value="website-dev" >Website Development</option>
-                  <option value="software-dev">Software Development</option>
-                  <option value="mobile-dev">Mobile Application Development</option>
-                  <option value="digital-mar">Digital Marketing</option>
+                  <option value="Website-development" >Website Development</option>
+                  <option value="software-development">Software Development</option>
+                  <option value="mobile-app-development">Mobile Application Development</option>
+                  <option value="digital-marketing">Digital Marketing</option>
               </select>
 
           </div>
