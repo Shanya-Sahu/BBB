@@ -1,2 +1,2 @@
 # BBB Project: Taking Ownership from Start to Finish
-In the BBB Project, I undertook complete ownership, overseeing every aspect of its development. This endeavor holds particular significance as it was exclusively crafted for internal application within our company. Built using the MERN stack, this project stands as a testament to my inaugural foray into the realm of full-stack development.
+BBB Project: I did the whole project by myself. This project is for my company's private use. It was created using the MERN stack, and it's my very first project where I handled both the front-end and back-end parts.
